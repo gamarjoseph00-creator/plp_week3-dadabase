@@ -1,0 +1,28 @@
+-- ==========================================
+-- 1. Create the student table (DDL)
+-- ==========================================
+CREATE TABLE student (
+    id INT PRIMARY KEY,
+    fullName VARCHAR(100),
+    age INT
+);
+
+-- ==========================================
+-- 2. Insert 3 students & update ID 2 inside
+--    a transaction block (DML + TCL)
+-- ==========================================
+BEGIN;
+
+INSERT INTO student (id, fullName, age) VALUES
+    (1, 'Amina Hassan', 19),
+    (2, 'David Otieno', 18),
+    (3, 'Grace Wanjiku', 21);
+
+UPDATE student
+SET age = 20
+WHERE id = 2;
+
+COMMIT;
+
+-- Optional verification query (run after COMMIT to check results)
+SELECT * FROM student;
